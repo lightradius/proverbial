@@ -1,4 +1,4 @@
-<navbar proverbial-navbar data-lang={{vm.currentLang}}></navbar>
+<proverbial-navbar data-lang={{vm.currentLang}}></proverbial-navbar>
 
 <!-- intro -->
 <div class="container">
@@ -12,7 +12,7 @@
 <!-- search bar -->
 <div class="container menu">
     <div class="search input-group input-group-lg">
-        <input type="text" class="form-control" placeholder="Search" aria-describedby="addon" ng-model="query">
+        <input type="text" class="form-control" placeholder="Search" aria-describedby="addon" ng-model="vm.query" ng-change="vm.filterProverbs()">
         <span class="input-group-addon" id="addon"><i class="fa fa-search"></i></span>
         <!-- <input type="text" class="form-control" placeholder="Search" aria-describedby="addon" ng-model="query">
         <span class="input-group-addon" id="addon"><i class="fa fa-search"></i></span> -->
@@ -20,17 +20,38 @@
 </div>
 
 <!-- alphabet filter -->
-<div class="menu text-center">
-    <ul class="list-inline">
-        <li ng-repeat="letter in vm.alphabet">
-            <a href class="letter" ng-click="vm.setActiveLetter(letter)">{{letter}}</a>
-        </li>
-    </ul>
-    <a href ng-click="vm.disableFilter()">Clear Filter</a>
-    <h4>{{}}</h4>
+<md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
+  <md-tab ng-repeat="letter in vm.alphabet"
+          ng-disabled="letter.disabled"
+          label="{{letter}}">
+    <div class="demo-tab tab{{$index%4}}" style="padding: 15px; text-align: center;">
+      <div ng-bind="tab.content"></div>
+      <br/>
+      <md-button class="md-primary md-raised" ng-click="removeTab( tab )" ng-disabled="tabs.length <= 1">Remove Tab</md-button>
+    </div>
+  </md-tab>
+</md-tabs>
+
+<!-- status message -->
+<div class="container">
+    <p class="text-muted">{{vm.displayMessage()}}</p>
 </div>
 
 <!-- proverb list  | filter:query | firstLetter:activeLetter:filterEnabled -->
-<div class="card" proverbial-card data-proverb={{proverb}} ng-repeat="proverb in vm.proverbs | filter:query | firstLetter:vm.activeLetter:vm.filterEnabled"></div>
-
-<footer proverbial-footer></footer>
+<md-content layout-padding>
+    <md-grid-list
+        md-cols-gt-md="12" md-cols="3" md-cols-md="8"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
+        <md-grid-tile
+            ng-repeat="proverb in vm.proverbs"
+            md-colspan-gt-sm="{{proverb.colspan}}"
+            md-rowspan-gt-sm="{{proverb.rowspan}}"
+            ng-style="{'background': proverb.color}">
+            <span class="proverb text-center">
+                {{proverb.text}}
+            </span>
+        </md-grid-tile>
+    </md-grid-list>
+</md-content>
+    <!-- <div class="card" proverbial-card data-proverb={{proverb}} ng-repeat="proverb in vm.filteredData | firstLetter:vm.activeLetter:vm.filterEnabled" ></div> -->

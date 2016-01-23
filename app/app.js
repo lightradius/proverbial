@@ -3,7 +3,8 @@
 
     angular
         .module('proverbial', [
-            'ui.router'
+            'ui.router',
+            'ngMaterial'
         ])
         .constant('DEFAULT', {
             'shortName': 'en',

@@ -1,13 +1,13 @@
 /*
 * Color scheme from: https://color.adobe.com/Theme-2-color-theme-6131303
 */
-/* line 1, _test.scss */
+/* line 1, _card.scss */
 .card {
   display: table;
-  width: 100%;
+  float: left;
   text-align: center;
   padding: 20px;
-  margin: 15px 0;
+  margin: 6px;
   box-shadow: 0 2px 0 #888;
 }
 
@@ -17,65 +17,66 @@ html {
   min-height: 100%;
 }
 
-/* line 12, main.scss */
+/* line 15, main.scss */
+.ng-enter {
+  opacity: 0;
+}
+
+/* line 19, main.scss */
 .alert {
   border-radius: 0px;
 }
 
-/* line 15, main.scss */
-.inline {
-  display: inline;
+/* line 23, main.scss */
+.proverb {
+  color: white;
+  padding: 8px;
 }
 
-/* line 19, main.scss */
+/* line 28, main.scss */
+.text-center {
+  text-align: center;
+}
+
+/* line 32, main.scss */
 .letter {
   font-size: 1.8em;
 }
 
-/* line 23, main.scss */
+/* line 36, main.scss */
 .text {
   display: table-cell;
   vertical-align: middle;
 }
 
-/* line 28, main.scss */
+/* line 41, main.scss */
 .card .text {
   font-size: 1.4em;
 }
 
-/* line 31, main.scss */
-.card {
-  float: left;
+/* line 45, main.scss */
+.alphabet {
+  font-size: 16px;
+  letter-spacing: 8px;
 }
 
-/* line 35, main.scss */
-.container .search {
-  margin-bottom: 10px;
-}
-
-/* line 39, main.scss */
-main.container-fluid {
-  min-height: 100%;
-}
-
-/* line 43, main.scss */
+/* line 50, main.scss */
 body {
   background-color: #AAB3B6;
   color: #E6F1F5;
   padding: 0;
-  padding-top: 75px;
   font-family: 'Quando';
   margin-bottom: 80px;
 }
 
-/* line 52, main.scss */
+/* line 58, main.scss */
 .menu {
   font-family: 'Roboto Condensed';
   font-weight: 700;
   text-shadow: 0 1px 0 #888;
 }
 
-/* line 58, main.scss */
+/* line 64, main.scss */
 a:link,
 a:visited,
 a:hover,
@@ -84,12 +85,12 @@ a:active {
   color: #E7E3CC;
 }
 
-/* line 66, main.scss */
+/* line 72, main.scss */
 a:active, a:focus {
   color: #E7C299;
 }
 
-/* line 71, main.scss */
+/* line 76, main.scss */
 footer {
   position: absolute;
   bottom: 0;
@@ -101,10 +102,3 @@ footer {
   background-color: #222;
   color: #777;
 }
-
-/* line 83, main.scss */
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Responsive: Portrait tablets and up */
