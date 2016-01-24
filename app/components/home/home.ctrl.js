@@ -5,16 +5,17 @@
         .module('proverbial')
         .controller('HomeCtrl', Controller);
 
-    Controller.$inject = ['LANG', '$filter', '$scope', '$stateParams', 'ProverbFactory', 'firstLetterFilter'];
+    Controller.$inject = ['LANG', '$filter', '$rootScope', '$scope', '$stateParams', 'HttpInterceptor', 'ProverbFactory', 'firstLetterFilter'];
 
     /* @ngInject */
-    function Controller(LANG, $filter, $scope, $stateParams, ProverbFactory, firstLetterFilter) {
+    function Controller(LANG, $filter, $rootScope, $scope, $stateParams, HttpInterceptor, ProverbFactory, firstLetterFilter) {
         var vm = this;
 
         // variables
         vm.currentLang = {};
         vm.currentLang.short = $stateParams.lang;
         vm.alphabet = ProverbFactory.getAlphabet();
+        vm.loading = $rootScope.isLoading;
 
         // functions
         vm.disableFilter = disableFilter;
@@ -52,51 +53,35 @@
                     vm.proverbs.push(proverb);
                 })
                 vm.filteredData = vm.proverbs;
-                addStyle();
+                addStyles();
             });
         }
 
-        function addStyle() {
+        function addStyles() {
             angular.forEach(vm.proverbs, function(value, key) {
-                value.color = colorize(value.text);
-                value.colspan = getColSpan(value.text);
-                value.rowspan = getRowSpan(value.text);
-            })
+                value.color = getColor(value.text);
+                value.tileSize = getTileSize(value.text);
+            });
         }
 
-        function getColSpan(str) {
-            var r = str.length/120;
-            if (r < 0.3) {
-                return 1;
-            } else if (r < 0.6) {
-                return 2;
-            } else if (r < 0.9) {
-                return 3;
-            } else if (r < 1.2) {
-                return 4;
-            } else if (r < 1.5) {
-                return 5;
-            } else if (r < 1.8) {
-                return 6;
-            } else if (r < 2.1) {
-                return 7;
+        function getTileSize(str) {
+            var size = (str.length/100);
+            var coin = (Math.floor(Math.random() * 2) == 0);
+
+            if (size > 2) {
+                return {colspan: 4, rowspan: 2};
+            } else if (size <= 0.25) {
+                return {colspan: 1, rowspan: 1};
+            } else if (size <= 0.6 && coin){
+                return {colspan: 1, rowspan: 2};
+            } else if (size <= 0.6 && !coin){
+                return {colspan: 2, rowspan: 1};
             } else {
-                return 8;
+                return {colspan: 2, rowspan: 2};
             }
         }
 
-        function getRowSpan(str) {
-            var r = str.length/120;
-            if (r < 0.6) {
-                return 1;
-            } else if (r < 1.2) {
-                return 2;
-            } else {
-                return 3;
-            }
-        }
-
-        function colorize(proverb) {
+        function getColor(proverb) {
             var str = proverb;
             var hash = str.hashCode();
 
@@ -105,15 +90,13 @@
             var g = (hash & 0x00FF00) >> 8;
             var b = hash & 0x0000FF;
 
-            // Pastel
+            // Pastel (add white to dilute our colors)
             r = parseInt((r + 255)/4);
             g = parseInt((g + 255)/4);
             b = parseInt((b + 255)/4);
 
             return 'rgb(' + r + ',' + g + ',' + b + ')';
         }
-
-
 
         function disableFilter() {
             vm.filterEnabled = false;

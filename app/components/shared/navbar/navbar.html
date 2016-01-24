@@ -1,14 +1,13 @@
-<div layout="row" layout-padding class="bg-dark-blue nav-dark" layout-align="space-between center">
-    <h2>Material Proverbs</h2>
+<div layout="row" layout-padding layout-align="space-between center">
     <div>
         <md-menu>
-            <md-button class="md-raised md-accent" md-menu-origin ng-click="$mdOpenMenu()">
-                <img ng-src="assets/img/flags/{{vm.currentLang.shortName}}.png" /> {{vm.currentLang.longName}}<span class="caret"></span>
+            <md-button class="md-raised" md-menu-origin ng-click="$mdOpenMenu()">
+                <img ng-src="assets/img/flags/{{vm.currentLang.shortName}}.png" />
             </md-button>
-            <md-menu-content width="6">
+            <md-menu-content width="2">
                 <md-menu-item ng-repeat="language in vm.languages">
                     <md-button ui-sref="home({lang: language.shortName})">
-                        <img ng-src="assets/img/flags/{{language.shortName}}.png" /> {{language.longName}}
+                        <img ng-src="assets/img/flags/{{language.shortName}}.png" />
                     </md-button>
                 </md-menu-item>
             </md-menu-content>

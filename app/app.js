@@ -24,7 +24,9 @@
                 'longName': 'Swedish'
             }
         })
-        .config(function($stateProvider, $urlRouterProvider, DEFAULT) {
+        .config(function($httpProvider, $stateProvider, $urlRouterProvider, DEFAULT) {
+
+            $httpProvider.interceptors.push('HttpInterceptor');
 
             $urlRouterProvider
                 .otherwise('/' + DEFAULT.shortName);

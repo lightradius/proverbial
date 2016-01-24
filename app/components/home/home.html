@@ -1,3 +1,5 @@
+<h1>Material Proverbs</h1>
+
 <proverbial-navbar data-lang={{vm.currentLang}}></proverbial-navbar>
 
 <!-- intro -->
@@ -10,44 +12,46 @@
 </div>
 
 <!-- search bar -->
-<div class="container menu">
-    <div class="search input-group input-group-lg">
-        <input type="text" class="form-control" placeholder="Search" aria-describedby="addon" ng-model="vm.query" ng-change="vm.filterProverbs()">
-        <span class="input-group-addon" id="addon"><i class="fa fa-search"></i></span>
-        <!-- <input type="text" class="form-control" placeholder="Search" aria-describedby="addon" ng-model="query">
-        <span class="input-group-addon" id="addon"><i class="fa fa-search"></i></span> -->
-    </div>
-</div>
+<md-content class="search" layout="column" layout-padding>
+  <div>
+    <md-input-container class="md-icon-float md-block">
+        <md-icon md-font-icon="fa-search" class="fa"></md-icon>
+      <input placeholder="Filter proverbs" aria-describedby="addon" ng-model="vm.query" ng-change="vm.filterProverbs();">
+    </md-input-container>
+  </div>
+</md-content>
 
 <!-- alphabet filter -->
-<md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
+<!-- <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
   <md-tab ng-repeat="letter in vm.alphabet"
           ng-disabled="letter.disabled"
           label="{{letter}}">
-    <div class="demo-tab tab{{$index%4}}" style="padding: 15px; text-align: center;">
-      <div ng-bind="tab.content"></div>
-      <br/>
-      <md-button class="md-primary md-raised" ng-click="removeTab( tab )" ng-disabled="tabs.length <= 1">Remove Tab</md-button>
-    </div>
   </md-tab>
-</md-tabs>
+</md-tabs> -->
 
 <!-- status message -->
 <div class="container">
     <p class="text-muted">{{vm.displayMessage()}}</p>
 </div>
 
+<div layout="row" layout-sm="column" layout-align="space-around" ng-show="isLoading">
+  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
 <!-- proverb list  | filter:query | firstLetter:activeLetter:filterEnabled -->
-<md-content layout-padding>
+<md-content class="proverb-grid" layout-padding ng-cloak>
     <md-grid-list
+        ng-cloak
         md-cols-gt-md="12" md-cols="3" md-cols-md="8"
         md-row-height-gt-md="1:1" md-row-height="4:3"
-        md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
+        md-gutter-gt-md="8px" md-gutter-md="4px" md-gutter="2px">
         <md-grid-tile
-            ng-repeat="proverb in vm.proverbs"
-            md-colspan-gt-sm="{{proverb.colspan}}"
-            md-rowspan-gt-sm="{{proverb.rowspan}}"
-            ng-style="{'background': proverb.color}">
+            ng-cloak
+            class="tile"
+            ng-repeat="proverb in vm.filteredData"
+            md-colspan-gt-sm="{{proverb.tileSize.colspan}}"
+            md-rowspan-gt-sm="{{proverb.tileSize.rowspan}}"
+            ng-style="{'background-color': proverb.color}">
             <span class="proverb text-center">
                 {{proverb.text}}
             </span>

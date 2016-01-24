@@ -11,72 +11,109 @@
   box-shadow: 0 2px 0 #888;
 }
 
-/* line 7, main.scss */
+/* line 10, main.scss */
 html {
   position: relative;
   min-height: 100%;
 }
 
 /* line 15, main.scss */
+h1 {
+  padding: 20px;
+  text-align: center;
+  margin: 0;
+}
+
+/* line 24, main.scss */
 .ng-enter {
   opacity: 0;
 }
 
-/* line 19, main.scss */
+/* line 28, main.scss */
 .alert {
   border-radius: 0px;
 }
 
-/* line 23, main.scss */
+/* line 32, main.scss */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+/* line 36, main.scss */
+.png-icon {
+  margin: 5px auto auto;
+  padding: 0;
+  display: inline-block;
+  background-repeat: no-repeat no-repeat;
+  pointer-events: none;
+}
+
+/* line 44, main.scss */
+md-icon.fa {
+  display: block;
+  padding-left: 0px;
+  font-size: 20px;
+  padding: 4px;
+}
+
+/* line 51, main.scss */
 .proverb {
+  font-size: 15px;
   color: white;
   padding: 8px;
 }
 
-/* line 28, main.scss */
+/* line 57, main.scss */
+.search {
+  background-color: #555;
+  color: white !important;
+}
+
+/* line 62, main.scss */
+.proverb-grid {
+  padding: 8px 16px;
+  background-color: #222;
+}
+
+/* line 67, main.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 32, main.scss */
-.letter {
-  font-size: 1.8em;
+/* line 71, main.scss */
+.tile {
+  background: url("../assets/img/noise.png");
 }
 
-/* line 36, main.scss */
+/* line 75, main.scss */
 .text {
   display: table-cell;
   vertical-align: middle;
 }
 
-/* line 41, main.scss */
-.card .text {
-  font-size: 1.4em;
-}
-
-/* line 45, main.scss */
+/* line 80, main.scss */
 .alphabet {
   font-size: 16px;
   letter-spacing: 8px;
 }
 
-/* line 50, main.scss */
+/* line 85, main.scss */
 body {
-  background-color: #AAB3B6;
+  background-color: #222;
   color: #E6F1F5;
   padding: 0;
   font-family: 'Quando';
   margin-bottom: 80px;
 }
 
-/* line 58, main.scss */
+/* line 93, main.scss */
 .menu {
   font-family: 'Roboto Condensed';
   font-weight: 700;
   text-shadow: 0 1px 0 #888;
 }
 
-/* line 64, main.scss */
+/* line 99, main.scss */
 a:link,
 a:visited,
 a:hover,
@@ -85,12 +122,12 @@ a:active {
   color: #E7E3CC;
 }
 
-/* line 72, main.scss */
+/* line 107, main.scss */
 a:active, a:focus {
   color: #E7C299;
 }
 
-/* line 76, main.scss */
+/* line 111, main.scss */
 footer {
   position: absolute;
   bottom: 0;
@@ -101,4 +138,8 @@ footer {
   padding-top: 19px;
   background-color: #222;
   color: #777;
+}
+
+@media screen and (max-width: 1000px) {
+  font-size: 0.8em;
 }

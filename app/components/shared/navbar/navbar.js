@@ -25,13 +25,13 @@
         }
     }
 
-    Controller.$inject = ['LANG', 'DEFAULT', 'ProverbFactory'];
+    Controller.$inject = ['LANG', 'DEFAULT', 'ProverbFactory', '$stateParams'];
 
-    function Controller(LANG, DEFAULT, ProverbFactory) {
+    function Controller(LANG, DEFAULT, ProverbFactory, $stateParams) {
         var vm = this;
 
         vm.languages = LANG;
-        vm.currentLang = LANG[vm.lang.toUpperCase()];
+        vm.currentLang = LANG[$stateParams.lang.toUpperCase()];
 
         activate();
 
