@@ -15,7 +15,6 @@
         vm.currentLang = {};
         vm.currentLang.short = $stateParams.lang;
         vm.alphabet = ProverbFactory.getAlphabet();
-        vm.loading = $rootScope.isLoading;
 
         // functions
         vm.disableFilter = disableFilter;
@@ -31,6 +30,11 @@
             getCurrentLanguageLongName();
             getProverbs();
         }
+
+        $rootScope.$watch('isLoading', function(NewVal, OldVal) {
+            console.log(NewVal, OldVal);
+            vm.isLoading = NewVal;
+        })
 
         function getCurrentLanguageLongName() {
             angular.forEach(LANG, function(value, key) {
@@ -66,15 +70,11 @@
 
         function getTileSize(str) {
             var size = (str.length/100);
-            var coin = (Math.floor(Math.random() * 2) == 0);
+            var coin = (Math.floor(Math.random() * 2) === 0);
 
             if (size > 2) {
                 return {colspan: 4, rowspan: 2};
-            } else if (size <= 0.25) {
-                return {colspan: 1, rowspan: 1};
-            } else if (size <= 0.6 && coin){
-                return {colspan: 1, rowspan: 2};
-            } else if (size <= 0.6 && !coin){
+            } else if (size <= 0.6){
                 return {colspan: 2, rowspan: 1};
             } else {
                 return {colspan: 2, rowspan: 2};

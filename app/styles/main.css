@@ -24,22 +24,22 @@ h1 {
   margin: 0;
 }
 
-/* line 24, main.scss */
+/* line 25, main.scss */
 .ng-enter {
   opacity: 0;
 }
 
-/* line 28, main.scss */
+/* line 29, main.scss */
 .alert {
   border-radius: 0px;
 }
 
-/* line 32, main.scss */
+/* line 33, main.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 
-/* line 36, main.scss */
+/* line 37, main.scss */
 .png-icon {
   margin: 5px auto auto;
   padding: 0;
@@ -48,7 +48,7 @@ h1 {
   pointer-events: none;
 }
 
-/* line 44, main.scss */
+/* line 45, main.scss */
 md-icon.fa {
   display: block;
   padding-left: 0px;
@@ -56,48 +56,52 @@ md-icon.fa {
   padding: 4px;
 }
 
-/* line 51, main.scss */
+/* line 52, main.scss */
 .proverb {
   font-size: 15px;
   color: white;
   padding: 8px;
 }
 
-/* line 57, main.scss */
-.search {
-  background-color: #555;
-  color: white !important;
-}
-
-/* line 62, main.scss */
+/* line 58, main.scss */
 .proverb-grid {
   padding: 8px 16px;
-  background-color: #222;
 }
 
-/* line 67, main.scss */
+/* line 63, main.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 71, main.scss */
+/* line 67, main.scss */
 .tile {
   background: url("../assets/img/noise.png");
 }
 
-/* line 75, main.scss */
+/* line 71, main.scss */
 .text {
   display: table-cell;
   vertical-align: middle;
 }
 
-/* line 80, main.scss */
+/* line 76, main.scss */
 .alphabet {
   font-size: 16px;
   letter-spacing: 8px;
 }
 
+/* line 81, main.scss */
+button, body, select, html, textarea, input {
+  font-family: 'Quando', 'Helvetica Neue', sans-serif;
+}
+
 /* line 85, main.scss */
+.md-fab.md-raised {
+  background-size: cover;
+  box-shadow: none !important;
+}
+
+/* line 90, main.scss */
 body {
   background-color: #222;
   color: #E6F1F5;
@@ -106,14 +110,14 @@ body {
   margin-bottom: 80px;
 }
 
-/* line 93, main.scss */
+/* line 98, main.scss */
 .menu {
   font-family: 'Roboto Condensed';
   font-weight: 700;
   text-shadow: 0 1px 0 #888;
 }
 
-/* line 99, main.scss */
+/* line 104, main.scss */
 a:link,
 a:visited,
 a:hover,
@@ -122,19 +126,18 @@ a:active {
   color: #E7E3CC;
 }
 
-/* line 107, main.scss */
+/* line 112, main.scss */
 a:active, a:focus {
   color: #E7C299;
 }
 
-/* line 111, main.scss */
+/* line 116, main.scss */
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #f5f5f5;
   padding-top: 19px;
   background-color: #222;
   color: #777;

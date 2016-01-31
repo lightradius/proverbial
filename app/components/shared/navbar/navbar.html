@@ -1,16 +1,18 @@
-<div layout="row" layout-padding layout-align="space-between center">
-    <div>
-        <md-menu>
-            <md-button class="md-raised" md-menu-origin ng-click="$mdOpenMenu()">
-                <img ng-src="assets/img/flags/{{vm.currentLang.shortName}}.png" />
-            </md-button>
-            <md-menu-content width="2">
-                <md-menu-item ng-repeat="language in vm.languages">
-                    <md-button ui-sref="home({lang: language.shortName})">
-                        <img ng-src="assets/img/flags/{{language.shortName}}.png" />
-                    </md-button>
-                </md-menu-item>
-            </md-menu-content>
-        </md-menu>
-    </div>
+<div class="" layout="column" layout-align="center right">
+    <md-content class="search" layout="column" layout-padding>
+        <h1>Material Proverbs</h1>
+        <div layout="row" layout-gt-sm="row">
+            <md-input-container class="md-block" class="md-icon-float" flex>
+                <md-icon md-font-icon="fa-search" class="fa"></md-icon>
+                <input placeholder="Filter proverbs" aria-describedby="addon" ng-model="vm.query" ng-change="vm.filterProverbs();">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <md-select ng-model="vm.currentLang">
+                    <md-option ng-repeat="language in vm.languages track by $index">
+                        {{language.longName}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </md-content>
 </div>

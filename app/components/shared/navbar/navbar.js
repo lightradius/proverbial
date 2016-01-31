@@ -32,7 +32,9 @@
 
         vm.languages = LANG;
         vm.currentLang = LANG[$stateParams.lang.toUpperCase()];
-
+        vm.isOpen = false;
+        vm.selectedMode = 'md-fling';
+        
         activate();
 
         function activate() {

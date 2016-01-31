@@ -21,6 +21,7 @@ h1 {
 .ng-leave {
 
 }
+
 .ng-enter {
   opacity:0;
 }
@@ -54,14 +55,9 @@ md-icon.fa {
     padding: 8px;
 }
 
-.search {
-    background-color: $highlight-color;
-    color: white !important;
-}
-
 .proverb-grid {
     padding: 8px 16px;
-    background-color: $background-color;
+    // background-color: $background-color;
 }
 
 .text-center {
@@ -80,6 +76,15 @@ md-icon.fa {
 .alphabet {
     font-size: 16px;
     letter-spacing: 8px;
+}
+
+button, body, select, html, textarea, input {
+    font-family: 'Quando', 'Helvetica Neue', sans-serif;
+}
+
+.md-fab.md-raised {
+    background-size: cover;
+    box-shadow: none !important;
 }
 
 body {
@@ -114,7 +119,7 @@ footer {
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 60px;
-    background-color: #f5f5f5;
+    // background-color: #f5f5f5;
     padding-top: 19px;
     background-color: #222;
     color: #777;

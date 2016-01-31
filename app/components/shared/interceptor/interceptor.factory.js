@@ -5,10 +5,10 @@
         .module('proverbial')
         .factory('HttpInterceptor', factory);
 
-    factory.$inject = ['$rootScope', '$timeout'];
+    factory.$inject = ['$q', '$rootScope', '$timeout'];
 
     /* @ngInject */
-    function factory($rootScope, $timeout) {
+    function factory($q, $rootScope, $timeout) {
         var service = {
             'request': function (config) {
                 $rootScope.isLoading = true;
